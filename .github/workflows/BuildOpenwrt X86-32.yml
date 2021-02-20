@@ -21,7 +21,9 @@ on:
       - '.github/workflows/*-x86-*.yml'
   schedule:
     - cron: '0 1 * * 5'
-   workflow_dispatch:
+    
+  repository_dispatch:
+  workflow_dispatch:
 
 env:
   TZ: Asia/Shanghai
