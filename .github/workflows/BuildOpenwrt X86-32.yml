@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: Build x86 OpenWrt
+name: BuildOpenWrt X86-32
 
 on:
   release:
@@ -21,6 +21,8 @@ on:
       - '.github/workflows/*-x86-*.yml'
   schedule:
     - cron: '0 1 * * 5'
+  repository_dispatch:
+  workflow_dispatch:
 
 env:
   TZ: Asia/Shanghai
@@ -40,6 +42,8 @@ env:
 
 jobs:
   build:
+    name: Build OpenWrt firmware
+    
     runs-on: ubuntu-18.04
     if: github.event.repository.owner.id == github.event.sender.id
 
