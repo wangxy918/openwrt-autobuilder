@@ -16,11 +16,14 @@ echo "Perpare Script [Start]"
 ##################################
 echo ""
 echo "Adding lienol xxx feeds"
-echo "src-git passwall https://github.com/xiaorouji/openwrt-passwall.git" >> feeds.conf.default
+"src-git passwall https://github.com/xiaorouji/openwrt-passwall.git" >> feeds.conf.default
+"src-git OpenClash https://github.com/vernesong/OpenClash.git" >> feeds.conf.default
+echo "cat feeds.conf.default"
+cat feeds.conf.default
 
 echo ""
 echo "add lean xxx feeds"
-sed -i "s/^#\(src-git helloworld .*\)$/\1/" feeds.conf.default
+echo sed -i "s/^#\(src-git helloworld .*\)$/\1/" feeds.conf.default
 
 echo ""
 echo "Updating feeds"
@@ -36,16 +39,16 @@ echo "Installing feeds"
 
 echo ""
 echo "Using luci-theme-argon offical source code"
-rm -rf package/lean/luci-theme-argon
-git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/lean/luci-theme-argon
+echo rm -rf package/lean/luci-theme-argon
+echo git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/lean/luci-theme-argon
 
 echo ""
 echo "Downloading Custom packages"
-git clone --depth=1 https://github.com/kongfl888/luci-app-adguardhome.git package/luci-app-adguardhome
-git clone --depth=1 https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
-git clone --depth=1 -b master https://github.com/vernesong/OpenClash.git package/OpenClash
-mv package/OpenClash/luci-app-openclash package/luci-app-openclash
-rm -rf package/OpenClash
+echo git clone --depth=1 https://github.com/kongfl888/luci-app-adguardhome.git package/luci-app-adguardhome
+echo git clone --depth=1 https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
+echo git clone --depth=1 -b master https://github.com/vernesong/OpenClash.git package/OpenClash
+echo mv package/OpenClash/luci-app-openclash package/luci-app-openclash
+echo rm -rf package/OpenClash
 
 cd $OPENWRT_PATH
 
