@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: Build amd64 OpenWrt
+name: BuildOpenWrt X86-64
 
 on:
   release:
@@ -21,6 +21,7 @@ on:
       - '.github/workflows/*-amd64-*.yml'
   schedule:
     - cron: '0 5 * * 5'
+  workflow_dispatch:
 
 env:
   TZ: Asia/Shanghai
@@ -30,8 +31,8 @@ env:
   PREPARE_SH: prepare.sh
   POST_INSTALL_SH: post-install.sh
   CHECK_CONFIG: true
-  SSH_ACTIONS: ${{ secrets.OPENWRT_ENABLE_SSH }}
-  OPENWRT_ROOT_PASSWORD: ${{ secrets.OPENWRT_ROOT_PASSWORD }}
+#  SSH_ACTIONS: ${{ secrets.OPENWRT_ENABLE_SSH }}
+#  OPENWRT_ROOT_PASSWORD: ${{ secrets.OPENWRT_ROOT_PASSWORD }}
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
@@ -39,6 +40,8 @@ env:
   UPLOAD_RELEASE: true
 
 jobs:
+  name: Build OpenWrt firmware
+  
   build:
     runs-on: ubuntu-18.04
     if: github.event.repository.owner.id == github.event.sender.id
@@ -73,12 +76,12 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$PREPARE_SH
 
-    - name: SSH connection to Actions
-      uses: P3TERX/ssh2actions@v1.0.0
-      if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
-      env:
-        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+#    - name: SSH connection to Actions
+#      uses: P3TERX/ssh2actions@v1.0.0
+#      if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
+#      env:
+#        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+#        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
     - name: Use .config file
       run: |
