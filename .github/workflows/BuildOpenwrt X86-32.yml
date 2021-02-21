@@ -11,14 +11,15 @@ name: BuildOpenWrt X86-32
 on:
 #  release:
 #    types: [published]
-  push:
-    branches:
-      - master
-    paths:
-      - '*.sh'
-      - 'x86.config'
-      - 'common.config'
-      - '.github/workflows/*-x86-*.yml'
+#  push:
+#    branches:
+#      - master
+#    paths:
+#      - '*.sh'
+#      - 'x86.config'
+#      - 'common.config'
+#      - '.github/workflows/*-x86-*.yml'
+
   schedule:
     - cron: '0 1 * * 5'
     
@@ -34,7 +35,7 @@ env:
   CHECK_CONFIG: true
 #  OPENWRT_ROOT_PASSWORD: ${{ secrets.OPENWRT_ROOT_PASSWORD }}
 #  SSH_ACTIONS: ${{ secrets.OPENWRT_ENABLE_SSH }}
-  UPLOAD_BIN_DIR: false
+  UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
   UPLOAD_WETRANSFER: false
