@@ -9,8 +9,8 @@
 name: BuildOpenWrt X86-64
 
 on:
-  release:
-    types: [published]
+#  release:
+#    types: [published]
   push:
     branches:
       - master
@@ -21,6 +21,7 @@ on:
       - '.github/workflows/*-amd64-*.yml'
   schedule:
     - cron: '0 5 * * 5'
+    
   workflow_dispatch:
 
 env:
