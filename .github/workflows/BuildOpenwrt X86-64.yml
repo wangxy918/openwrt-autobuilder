@@ -11,14 +11,14 @@ name: BuildOpenWrt X86-64
 on:
 #  release:
 #    types: [published]
-  push:
-    branches:
-      - master
-    paths:
-      - '*.sh'
-      - 'amd64.config'
-      - 'common.config'
-      - '.github/workflows/*-amd64-*.yml'
+#  push:
+#    branches:
+#      - master
+#    paths:
+#      - '*.sh'
+#      - 'amd64.config'
+#      - 'common.config'
+#      - '.github/workflows/*-amd64-*.yml'
   schedule:
     - cron: '0 5 * * 5'
     
@@ -34,7 +34,7 @@ env:
   CHECK_CONFIG: true
 #  SSH_ACTIONS: ${{ secrets.OPENWRT_ENABLE_SSH }}
 #  OPENWRT_ROOT_PASSWORD: ${{ secrets.OPENWRT_ROOT_PASSWORD }}
-  UPLOAD_BIN_DIR: false
+  UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
   UPLOAD_WETRANSFER: false
