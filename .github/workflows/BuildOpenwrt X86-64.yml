@@ -41,13 +41,17 @@ env:
   UPLOAD_RELEASE: true
 
 jobs:
-  name: Build OpenWrt firmware
-  
   build:
+    name: Build OpenWrt firmware
+    
     runs-on: ubuntu-18.04
     if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
+    - name: Get build date
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y%m%d%H%M%S')"
+   
     - name: Checkout
       uses: actions/checkout@master
 
