@@ -19,9 +19,6 @@ echo ""
 echo "Adding passwall feeds"
 echo "src-git passwall https://github.com/xiaorouji/openwrt-passwall.git" >> feeds.conf.default
 
-#echo "src-git OpenClash https://github.com/vernesong/OpenClash.git" >> feeds.conf.default
-#echo "src-git serverchan https://github.com/tty228/luci-app-serverchan.git" >> feeds.conf.default
-
 #echo ""
 #echo "add lean xxx feeds"
 #sed -i "s/^#\(src-git helloworld .*\)$/\1/" feeds.conf.default
